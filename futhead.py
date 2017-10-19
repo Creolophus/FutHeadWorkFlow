@@ -27,7 +27,7 @@ def getPlayerInfo(value):
             title= key,
             subtitle=value,
             attributes={
-                'uid': alfred.uid(index), 
+                'uid': alfred.uid(index),
                 'arg': u'%s\'s %s is %d' % (selectItem['full_name'], key , value),
             },
         	icon='icon.png',
@@ -82,7 +82,7 @@ def getPlayerDetail(value):
 		'Long Passing': selectItem['longpassing'],
 		'Curve': selectItem['curve']
 		}
-	elif status in 'dribbling' : 
+	elif status in 'dribbling' :
 		statusDic = {
 		'Agility': selectItem['agility'],
 		'Balance': selectItem['balance'],
@@ -99,7 +99,7 @@ def getPlayerDetail(value):
             title= key,
             subtitle=value,
             attributes={
-                'uid': alfred.uid(index), 
+                'uid': alfred.uid(index),
                 'arg': u'%s\'s %s is %d' % (selectItem['full_name'], key , value),
             },
         	icon='icon.png',
@@ -111,7 +111,7 @@ def getPlayerDetail(value):
 
 def getPlayerList(players):
 	if players is not None:
-		results = alfred_items_for_value(players) 
+		results = alfred_items_for_value(players)
 		xml = alfred.xml(results)
 		alfred.write(xml)
 
@@ -123,8 +123,8 @@ def alfred_items_for_value(value):
             title= item['full_name'],
             subtitle=item['rating'],
             attributes={
-                'uid': alfred.uid(index), 
-                'arg': u'http://www.futhead.com/17/players/%d/%s/' % (item['id'], item['slug']),
+                'uid': alfred.uid(index),
+                'arg': u'http://www.futhead.com/18/players/%d/%s/' % (item['id'], item['slug']),
             },
         	icon='icon.png',
         ))
@@ -138,9 +138,9 @@ def error(title="errorTitle", subtitle='i.e Ronald', arg=None):
 		attributes = {
 		'uid': 1,
 		'arg': arg,
-		}, 
-		title = title, 
-		subtitle = subtitle, 
+		},
+		title = title,
+		subtitle = subtitle,
 		icon = 'icon.png'
 		))
 	# print(results)
@@ -160,20 +160,20 @@ if len(alfred.args()) == 2:
 		(fake_name, rating) = alfred.args()
 		rating = int(rating)
 	except ValueError:
-		error(title=u"请按照 <球员> <分数> <属性>输入", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
+		error(title=u"Please enter by <player> <score> <attribute>(请按照 <球员> <分数> <属性>输入)", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
 		exit()
 elif len(alfred.args()) == 3:
 	try:
 		(fake_name, rating, status) = alfred.args()
 		rating = int(rating)
 	except ValueError:
-		error(title=u"请按照 <球员> <分数> <属性>输入", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
+		error(title=u"Please enter by <player> <score> <attribute>(请按照 <球员> <分数> <属性>输入)", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
 		exit()
 # else:
 # 	error(title=u"请按照 <球员> <分数> <属性>输入", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
 # 	exit()
 
-url = "http://www.futhead.com/quicksearch/player/17/?term=%s" % name
+url = "http://www.futhead.com/quicksearch/player/18/?term=%s" % name
 hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -188,7 +188,7 @@ except urllib2.URLError:
 
 players = json.loads(urllib2.urlopen(req).read())
 if len(players) == 0:
-	error(title = u"未查询到,或者名称太短")
+	error(title = u"Not inquired, or the name is too short(未查询到,或者名称太短)")
 	exit()
 
 if rating and status:
