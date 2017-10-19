@@ -124,7 +124,7 @@ def alfred_items_for_value(value):
             subtitle=item['rating'],
             attributes={
                 'uid': alfred.uid(index),
-                'arg': u'http://www.futhead.com/17/players/%d/%s/' % (item['id'], item['slug']),
+                'arg': u'http://www.futhead.com/18/players/%d/%s/' % (item['id'], item['slug']),
             },
         	icon='icon.png',
         ))
@@ -173,7 +173,7 @@ elif len(alfred.args()) == 3:
 # 	error(title=u"请按照 <球员> <分数> <属性>输入", subtitle="pace, shoot, pass, dri, def, phy", arg=None)
 # 	exit()
 
-url = "http://www.futhead.com/quicksearch/player/17/?term=%s" % name
+url = "http://www.futhead.com/quicksearch/player/18/?term=%s" % name
 hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
